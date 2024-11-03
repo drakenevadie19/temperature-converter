@@ -4,11 +4,22 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import hotBackground from "./assets/hot.png";
 import Input from "./components/Input/Input";
 import { useState } from "react";
+
 import DisplayTemperature from "./components/DisplayTemperature/DisplayTemperature";
+import { UNITS, getOppositeUnit, convertTemperatureTo } from "./utils/temperature"
 
 export default function App() {
   const [inputValue, setInputValue] = useState(0);
   const [currentUnit, setCurrentUnit] = useState("°C");
+
+  function getConvertedTemperature() {
+    if (isNaN(inputValue)) {
+      return "";
+    } else {
+      //toFixed(x) = round number to x digit after comma 
+      return convertTemperatureTo(inputValue, getOppositeUnit(currentUnit)).toFixed(1)
+    }
+  }
 
   return (
     <>
@@ -19,8 +30,8 @@ export default function App() {
             <View style={s.workspace}>
 
               <DisplayTemperature 
-                unit={currentUnit} 
-                temperatureConverted={inputValue} 
+                unit={getOppositeUnit(currentUnit)} 
+                temperatureConverted={getConvertedTemperature()} 
               />
 
               <Input
@@ -28,7 +39,7 @@ export default function App() {
                 onChange={setInputValue}
                 defaultValue={0}
               />
-              
+
               <Text>Button</Text>
             </View>
           </SafeAreaView>
