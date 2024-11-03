@@ -7,7 +7,7 @@ const Input = ({defaultValue}) => {
       <TextInput
         style={s.input}
         placeholder="Type your temperature"
-        maxLength={4}
+        maxLength={3}
         defaultValue={defaultValue.toString()}
       />
       {/* Option + shift + 8 */}
