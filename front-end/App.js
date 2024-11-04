@@ -6,7 +6,12 @@ import Input from "./components/Input/Input";
 import { useState } from "react";
 
 import DisplayTemperature from "./components/DisplayTemperature/DisplayTemperature";
-import { UNITS, getOppositeUnit, convertTemperatureTo } from "./utils/temperature"
+import {
+  UNITS,
+  getOppositeUnit,
+  convertTemperatureTo,
+} from "./utils/temperature";
+import ButtonConvert from "./components/ButtonConvert/ButtonConvert";
 
 export default function App() {
   const [inputValue, setInputValue] = useState(0);
@@ -16,8 +21,11 @@ export default function App() {
     if (isNaN(inputValue)) {
       return "";
     } else {
-      //toFixed(x) = round number to x digit after comma 
-      return convertTemperatureTo(inputValue, getOppositeUnit(currentUnit)).toFixed(1)
+      //toFixed(x) = round number to x digit after comma
+      return convertTemperatureTo(
+        inputValue,
+        getOppositeUnit(currentUnit)
+      ).toFixed(1);
     }
   }
 
@@ -28,10 +36,9 @@ export default function App() {
         <SafeAreaProvider>
           <SafeAreaView style={s.root}>
             <View style={s.workspace}>
-
-              <DisplayTemperature 
-                unit={getOppositeUnit(currentUnit)} 
-                temperatureConverted={getConvertedTemperature()} 
+              <DisplayTemperature
+                unit={getOppositeUnit(currentUnit)}
+                temperatureConverted={getConvertedTemperature()}
               />
 
               <Input
@@ -40,7 +47,10 @@ export default function App() {
                 defaultValue={0}
               />
 
-              <Text>Button</Text>
+              <ButtonConvert
+                onPress={() => setCurrentUnit(getOppositeUnit(currentUnit))}
+                unit={currentUnit}
+              />
             </View>
           </SafeAreaView>
         </SafeAreaProvider>
