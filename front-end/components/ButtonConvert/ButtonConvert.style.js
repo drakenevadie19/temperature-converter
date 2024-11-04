@@ -6,7 +6,7 @@ export const s = StyleSheet.create({
         paddingHorizontal: 40,
         paddingVertical: 20,
         borderRadius: 30,
-        width: 250
+        // width: 250
     },
     buttonConvertText: {
         alignSelf: "center",

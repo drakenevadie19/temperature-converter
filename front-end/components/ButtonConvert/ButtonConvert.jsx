@@ -7,7 +7,7 @@ const ButtonConvert = ({ unit, onPress }) => {
     return (
         <>
             <TouchableOpacity onPress={onPress} style={s.buttonConvert}>
-                <Text style={s.buttonConvertText}>Switch to from {getOppositeUnit(unit)} to {unit}</Text>
+                <Text style={s.buttonConvertText}>Switch to convert from {getOppositeUnit(unit)} to {unit}</Text>
             </TouchableOpacity>
         </>
     );
