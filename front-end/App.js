@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 import DisplayTemperature from "./components/DisplayTemperature/DisplayTemperature";
 import {
-  UNITS,
   getOppositeUnit,
   convertTemperatureTo,
 } from "./utils/temperature";
